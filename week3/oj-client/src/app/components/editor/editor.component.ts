@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 
 declare var ace: any;
+declare var io: any;
 
 @Component({
   selector: 'app-editor',
@@ -33,13 +34,15 @@ int main() {
         # Write your Python code here`
   };
 
-  constructor() { }
+  constructor(@Inject('collaboration') private collaboration) { }
 
   ngOnInit() {
     this.editor = ace.edit("editor");
     this.editor.setTheme("ace/theme/eclipse");
     this.resetEditor();
     this.editor.$blockScrolling = Infinity;
+
+    this.collaboration.init();
   }
 
   // reset editor content
