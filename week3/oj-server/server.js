@@ -5,7 +5,7 @@ var indexRouter = require("./routes/index");
 var mongoose = require("mongoose");
 var path = require("path");
 
-mongoose.connect("mongodb://user:user@ds119210.mlab.com:19210/coj");
+mongoose.connect("mongodb://user:user@ds145039.mlab.com:45039/collaborative_oj");
 app.use(express.static(path.join(__dirname, '../public')));
 
 app.use('/', indexRouter);
