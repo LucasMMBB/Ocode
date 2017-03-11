@@ -72,6 +72,9 @@ int main() {
       this.collaboration.cursorMove(JSON.stringify(cursor));
     });
 
+    // send restoreBuffer request to server
+    this.collaboration.restoreBuffer();
+
   }
 
   // reset editor content
