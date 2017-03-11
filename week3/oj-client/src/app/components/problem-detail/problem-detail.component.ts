@@ -2,6 +2,8 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { Problem } from "../../models/problem.model";
 import { ActivatedRoute} from "@angular/router";
 
+
+
 @Component({
   selector: 'app-problem-detail',
   templateUrl: './problem-detail.component.html',

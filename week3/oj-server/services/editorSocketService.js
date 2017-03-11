@@ -33,7 +33,7 @@ module.exports = function(io) {
                         'participants': []
                     };
                 }
-                collaborations[session_id]['participants'].push(socket.id);
+                collaborations[sessionId]['participants'].push(socket.id);
             });
         }
 
@@ -107,7 +107,7 @@ module.exports = function(io) {
                     }
                 }
             }
-            if (!foundAndemoved) {
+            if (!foundAndRemoved) {
                 console.log("WARNING: could not tie socket.id to any collaboration");
             }
             console.log(collaborations);
