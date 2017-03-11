@@ -37,7 +37,7 @@ int main() {
   };
 
   constructor( @Inject('collaboration') private collaboration,
-               private route: ActivatedRoute) { }
+    private route: ActivatedRoute) { }
 
   ngOnInit() {
     // use problem id as session id
@@ -62,10 +62,16 @@ int main() {
     //registering change callback
     this.editor.on("change", (e) => {
       console.log('editor changes: ' + JSON.stringify(e));
-      if(this.editor.lastAppliedChange != e) {
+      if (this.editor.lastAppliedChange != e) {
         this.collaboration.change(JSON.stringify(e));
       }
     });
+
+    this.editor.getSession().getSelection().on("changeCursor", () => {
+      let cursor = this.editor.getSession().getSelection().getCursor();
+      this.collaboration.cursorMove(JSON.stringify(cursor));
+    });
+
   }
 
   // reset editor content
