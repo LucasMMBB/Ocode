@@ -1,0 +1,17 @@
+# dependencies
+/node_modules
+
+# e2e
+/e2e/*.js
+/e2e/*.map
+/e2e
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+*.swp
