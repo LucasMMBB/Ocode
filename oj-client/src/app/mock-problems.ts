@@ -2,7 +2,7 @@ import { Problem } from "./models/problem.model";
 
 export const PROBLEMS: Problem[] = [
   {
-    id:2,
+    id:1,
     name: "Add two sum",
     desc: "You are given two non-empty linked lists representing two non-negative integers.\
      The digits are stored in reverse order and each of their nodes contain a single digit.\
@@ -12,27 +12,27 @@ export const PROBLEMS: Problem[] = [
      difficulty: "easy"
   },
   {
-    id:3,
+    id:2,
     name: "Longest Substring Without Repeating Characters",
     desc: "Given a string, find the length of the longest substring without repeating characters.",
     difficulty: "medium",
   },
   {
-    id:4,
+    id:3,
     name:"Median of two sortted arrays",
     desc: "There are two sorted arrays nums1 and nums2 of size m and n respectively.\
 Find the median of the two sorted arrays. The overall run time complexity should be O(log (m+n)).",
     difficulty: "hard"
   },
   {
-    id: 5,
+    id:4,
     name: "Longest Palindromic Substring",
     desc: "Given a string s, find the longest palindromic substring in s.\
      You may assume that the maximum length of s is 1000.",
      difficulty: "medium"
   },
   {
-    id:6,
+    id:5,
     name: "ZigZag Conversion",
     desc: "The string 'PAYPALISHIRING' is written in a zigzag\
      pattern on a given number of rows like this: (you may want to\
