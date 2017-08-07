@@ -1,19 +1,19 @@
 import { Injectable } from '@angular/core';
 import { Problem } from '../models/problem.model';
 import { PROBLEMS } from '../mock-problems';
+import { Http, Response, Headers } from '@angular/http';
 
 @Injectable()
 export class DataService {
-  problems: Problem[] = PROBLEMS;
-
-  constructor() { }
+  
+  constructor(private http: Http) { }
 
   getProblems(): Problem[] {
-  	return this.problems;
+  	this.http.get("api/v1/problems")
   }
 
   getProblem(id: number): Problem {
-  	return this.problems.find((problem) => problem.id === id);
+  	
   }
 
   addProblem(problem: Problem): void {
