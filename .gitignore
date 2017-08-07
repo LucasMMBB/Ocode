@@ -1,3 +1,5 @@
+/public
+oj-client/dist/
 # Logs
 logs
 *.log
