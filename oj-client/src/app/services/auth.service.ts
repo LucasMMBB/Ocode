@@ -5,7 +5,7 @@ import { tokenNotExpired } from 'angular2-jwt';
 declare var Auth0Lock: any;
 
 @Injectable()
-export class Auth {
+export class AuthService {
 
   // configure Auth0
   clientID = 's1WsAPFYmbycha68omqQFq4eobHtx6Y6';

@@ -15,7 +15,7 @@ import { routing } from './app.routes';
 
 
 import { DataService } from './services/data.service';
-import { Auth } from './services/auth.service';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
@@ -38,7 +38,7 @@ import { Auth } from './services/auth.service';
   	},
     {
       provide:"auth",
-      useClass:Auth
+      useClass:AuthService
     }
   ],
   bootstrap: [AppComponent]
