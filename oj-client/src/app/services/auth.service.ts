@@ -1,24 +1,24 @@
-import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
+import { Injectable }      from '@angular/core';
 import { tokenNotExpired } from 'angular2-jwt';
+import { Http, Response, Headers } from '@angular/http';
+import 'rxjs/add/operator/toPromise';
 
+// Avoid name not found warnings
 declare var Auth0Lock: any;
 
 @Injectable()
 export class AuthService {
-
-  // configure Auth0
+  // Configure Auth0
   clientID = 's1WsAPFYmbycha68omqQFq4eobHtx6Y6';
   domain = 'ojsystem.auth0.com';
 
   lock = new Auth0Lock(this.clientID, this.domain, {});
 
-  constructor() {
+  constructor(private http: Http) {
 
   }
 
   public login(): Promise<Object> {
-
     return new Promise((resolve, reject) => {
       // Call the show method to display the widget.
       this.lock.show((error: string, profile: Object, id_token: string) => {
@@ -31,23 +31,51 @@ export class AuthService {
         }
       });
     })
-    
   }
 
-  public authenticated(){
-    // Check if there is any expired JWT
-    // This searches for an item in localStorage with key == "id_token"
+  public authenticated() {
+    // Check if there's an unexpired JWT
+    // This searches for an item in localStorage with key == 'id_token'
     return tokenNotExpired();
   }
 
-  public logout(){
-    // Remove token from localstorage
+  public logout() {
+    // Remove token from localStorage
     localStorage.removeItem('id_token');
     localStorage.removeItem('profile');
   }
 
-  public getProfile(): Object {
+  public getProfile() {
     return JSON.parse(localStorage.getItem('profile'));
   }
 
+  public resetPassword(): void {
+    let profile = this.getProfile();
+    let url: string = `https://${this.domain}/dbconnections/change_password`;
+    let headers = new Headers({ 'content-type': 'application/json' });
+    let body = {
+      client_id: this.clientID,
+      email: profile.email,
+      connection: 'Username-Password-Authentication'
+    }
+
+    this.http.post(url, body, headers)
+      .toPromise()
+      .then((res: Response) => {
+        console.log("We have sent you an email! Please check it!!!")
+        //console.log(res.json());
+      })
+      .catch(this.handleError);
+
+  }
+
+
+  private handleError(error: any): Promise<any> {
+    console.error('Error occurred',error);
+    return Promise.reject(error.message || error);
+  }
+
 }
+
+
+
