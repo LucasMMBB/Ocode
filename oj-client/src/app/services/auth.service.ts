@@ -14,14 +14,24 @@ export class AuthService {
   lock = new Auth0Lock(this.clientID, this.domain, {});
 
   constructor() {
-    this.lock.on("authenticated", (authResult)=>{
-      localStorage.setItem('id_token', authResult.idToken);
-    });
+
   }
 
-  public login(){
-    // call the show method to display the widget
-    this.lock.show();
+  public login(): Promise<Object> {
+
+    return new Promise((resolve, reject) => {
+      // Call the show method to display the widget.
+      this.lock.show((error: string, profile: Object, id_token: string) => {
+        if (error) {
+          reject(error);
+        } else {
+          localStorage.setItem('profile', JSON.stringify(profile));
+          localStorage.setItem('id_token', id_token);
+          resolve(profile);
+        }
+      });
+    })
+    
   }
 
   public authenticated(){
@@ -33,6 +43,11 @@ export class AuthService {
   public logout(){
     // Remove token from localstorage
     localStorage.removeItem('id_token');
+    localStorage.removeItem('profile');
+  }
+
+  public getProfile(): Object {
+    return JSON.parse(localStorage.getItem('profile'));
   }
 
 }

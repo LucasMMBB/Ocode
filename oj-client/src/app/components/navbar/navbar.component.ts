@@ -18,10 +18,14 @@ export class NavbarComponent implements OnInit {
   constructor(@Inject("auth") private auth) { }
 
   ngOnInit() {
+    if(this.auth.authenticated()){
+      this.username = this.auth.getProfile().nickname;
+    }
   }
 
   login(): void {
-  	this.auth.login();
+  	this.auth.login()
+                .then(profile => this.username = profile.nickname);
   }
 
   logout(): void {
