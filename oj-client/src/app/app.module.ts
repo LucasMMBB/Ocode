@@ -16,6 +16,7 @@ import { routing } from './app.routes';
 
 import { DataService } from './services/data.service';
 import { AuthService } from './services/auth.service';
+import { ProfileComponent } from './components/src/app/components/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { AuthService } from './services/auth.service';
     ProblemListComponent,
     ProblemDetailComponent,
     NewProblemComponent,
-    NavbarComponent
+    NavbarComponent,
+    ProfileComponent
   ],
   imports: [
 	  BrowserModule,
