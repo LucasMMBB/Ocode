@@ -19,12 +19,12 @@
           </div>
         </form>
         <ul class="nav navbar-nav navbar-right">
-          <li *ngIf="!auth.authenticated()">
+          <li>
             <form class="navbar-form">
-              <button type="button" class="btn btn-primary" (click)="login()">Sign in</button>
+              <button type="button" class="btn btn-primary" *ngIf="authP()" (click)="login()">Sign in</button>
             </form>
           </li>
-          <li class="dropdown" *ngIf="auth.authenticated()">
+          <li class="dropdown" *ngIf="!authP()">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{username}} <span class="caret"></span></a>
             <ul class="dropdown-menu">
               <li><a routerLink="/profile">My Profile</a></li>

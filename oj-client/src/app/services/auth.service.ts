@@ -39,6 +39,16 @@ export class AuthService {
     return tokenNotExpired();
   }
 
+  public authenticatedPromise():Promise<boolean>{
+    return new Promise((resolve, reject)=>{
+      if (tokenNotExpired()){
+        resolve(true);
+      }else{
+        reject(false);
+      }
+    });
+  }
+
   public logout() {
     // Remove token from localStorage
     localStorage.removeItem('id_token');
