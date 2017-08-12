@@ -20,12 +20,9 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {
     if(this.auth.authenticated()){
       this.username = this.auth.getProfile().nickname;
-      console.log("The login username is : ");
-      console.log(this.username);
     }else{
       console.log("Not logged in !")
     }
-    console.log("Fuck you all");
   }
 
   authP(): boolean {

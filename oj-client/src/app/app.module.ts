@@ -16,7 +16,7 @@ import { routing } from './app.routes';
 
 import { DataService } from './services/data.service';
 import { AuthService } from './services/auth.service';
-
+//import { AuthGuardService } from './services/auth-guard.service';
 
 @NgModule({
   declarations: [
