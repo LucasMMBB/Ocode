@@ -27,16 +27,22 @@ export class EditorComponent implements OnInit {
 	  `,
 
 	  'Java': `public class Solution{
-		public static void main(String[] args){
-			// put your code here!
-		}
+	public static void main(String[] args){
+		// put your code here!
 	}
+}
 	  `,
 	  'JavaScript': `var sum(a, b) = {
 	return a + b;
 }
 sum(1, 2);
-	  `
+	  `,
+	  'C++':`class Solution {
+	public:
+	    string countAndSay(int n) {
+	        
+	    }
+};`
   }
 
   constructor() { 
