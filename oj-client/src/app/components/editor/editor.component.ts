@@ -10,6 +10,13 @@ declare var ace: any;
 export class EditorComponent implements OnInit {
 
   editor: any;
+
+  languages: string[] = ['Java', 'Python', 'C++', 'JavaScipt'];
+  language: string = 'Python';
+
+  themes: string[] = ['Monokai', 'Github', 'Eclipse', 'Xcode'];
+  theme: string = 'Monokai';
+
   defaultContent = {
 	  'Python': `
 class Solution(object):
@@ -26,6 +33,12 @@ public class Solution{
 			// put your code here!
 		}
 	}
+	  `,
+	  'JavaScript': `
+var sum(a, b) = {
+	return a + b;
+}
+sum(1, 2);
 	  `
   }
 
@@ -34,10 +47,23 @@ public class Solution{
 
   ngOnInit() {
   	this.editor = ace.edit('editor');
-  	this.editor.setTheme('ace/theme/monokai');
-  	this.editor.getSession().setMode('ace/mode/python');
-  	this.editor.setValue(this.defaultContent['Python']);
+  	this.resetEditor();
   	this.editor.$blockScrolling = Infinity;
   }
 
+  resetEditor(): void {
+  	this.editor.getSession().setMode('ace/mode/' + this.language.toLowerCase());
+  	this.editor.setTheme('ace/theme/' + this.theme.toLowerCase());
+  	this.editor.setValue(this.defaultContent[this.language]);
+  }
+
+  setTheme(theme: string): void {
+  	this.theme = theme;
+  	this.resetEditor();
+  }
+
+  setLanguage(language: string): void {
+  	this.language = language;
+  	this.resetEditor();
+  }
 }
