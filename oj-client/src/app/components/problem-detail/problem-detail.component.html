@@ -1,15 +1,13 @@
 <div class="container" *ngIf="problem">
   <div class="row">
-    <div class="col-xs-12 col-md-4">
+    <div class="col-xs-12 col-md-4 col-lg-4">
       <h2>{{problem.id}}. {{problem.name}}</h2>
       <p>{{problem.desc}}</p>
       <br/>
     </div>
-  </div>
-  <!-- ACE editor -->
-  <div class="row">
-  	<div class="hidden-xs col-sm-12 col-md-8">
-  		<app-editor></app-editor>
-  	</div>
+    <!-- ACE editor -->
+    <div class="hidden-xs col-sm-12 col-md-8 col-lg-4">
+      <app-editor></app-editor>
+    </div>
   </div>
 </div>
