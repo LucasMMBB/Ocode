@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+declare var ace: any;
+
 @Component({
   selector: 'app-editor',
   templateUrl: './editor.component.html',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditorComponent implements OnInit {
 
-  constructor() { }
+  editor: any;
+
+  constructor() { 
+  }
 
   ngOnInit() {
+  	this.editor = ace.edit('editor');
+  	this.editor.setTheme('ace/theme/monokai');
+  	this.editor.getSession().setMode('ace/mode/javascript');
   }
 
 }
