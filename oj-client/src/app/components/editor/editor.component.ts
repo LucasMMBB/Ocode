@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 
 declare var ace: any;
 
@@ -48,13 +48,15 @@ public:
 };`
   }
 
-  constructor() { 
+  constructor(@Inject('collaboration') private collaboration) { 
   }
 
   ngOnInit() {
   	this.editor = ace.edit('editor');
   	this.resetEditor();
   	this.editor.$blockScrolling = Infinity;
+    this.collaboration.init();
+    console.log("fuck you all");
   }
 
   resetEditor(): void {

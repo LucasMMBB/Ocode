@@ -17,6 +17,7 @@ import { routing } from './app.routes';
 
 import { DataService } from './services/data.service';
 import { AuthService } from './services/auth.service';
+import { CollaborationService } from './services/collaboration.service';
 //import { AuthGuardService } from './services/auth-guard.service';
 
 @NgModule({
@@ -43,6 +44,10 @@ import { AuthService } from './services/auth.service';
     {
       provide:"auth",
       useClass:AuthService
+    },
+    {
+      provide:"collaboration",
+      useClass: CollaborationService
     }
   ],
   bootstrap: [AppComponent]
