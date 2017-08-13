@@ -11,10 +11,10 @@ export class EditorComponent implements OnInit {
 
   editor: any;
 
-  languages: string[] = ['Java', 'Python', 'C++', 'JavaScipt'];
+  languages: string[] = ['Java', 'Python', 'C++', 'JavaScript'];
   language: string = 'Python';
 
-  themes: string[] = ['Monokai', 'Github', 'Eclipse', 'Xcode'];
+  themes: string[] = ['Monokai', 'Github', 'Eclipse', 'Xcode', 'textmate'];
   theme: string = 'Monokai';
 
   defaultContent = {
@@ -25,23 +25,26 @@ export class EditorComponent implements OnInit {
         :rtype: str
         """
 	  `,
-
 	  'Java': `public class Solution{
 	public static void main(String[] args){
 		// put your code here!
 	}
 }
 	  `,
-	  'JavaScript': `var sum(a, b) = {
-	return a + b;
-}
-sum(1, 2);
-	  `,
+	  'JavaScript': `
+/**
+ * @param {number} n
+ * @return {string}
+ */
+var countAndSay = function(n) {
+    
+};`
+		,
 	  'C++':`class Solution {
-	public:
-	    string countAndSay(int n) {
-	        
-	    }
+public:
+    string countAndSay(int n) {
+        
+    }
 };`
   }
 
@@ -69,4 +72,11 @@ sum(1, 2);
   	this.language = language;
   	this.resetEditor();
   }
+
+  submit(): void {
+  	let userCode = this.editor.getValue();
+  	console.log(userCode);
+  }
+
+
 }
