@@ -10,11 +10,9 @@ export class CollaborationService {
   constructor() { }
 
   init(): void {
-  	console.log("fuck you all too");
-  	this.collaborationSocket = io(window.location.origin, { query: 'message' + '123'});
+  	this.collaborationSocket = io(window.location.origin, { query: 'message=' + '123'});
   	this.collaborationSocket.on("message", (message) => {
-  		console.log("received: " + message);
-  		console.log("fuck you , am in console");
+  		console.log("From server: " + message);
   	});
   }
 

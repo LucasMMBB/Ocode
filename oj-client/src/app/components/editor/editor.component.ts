@@ -56,7 +56,6 @@ public:
   	this.resetEditor();
   	this.editor.$blockScrolling = Infinity;
     this.collaboration.init();
-    console.log("fuck you all");
   }
 
   resetEditor(): void {
