@@ -18,8 +18,7 @@ export class EditorComponent implements OnInit {
   theme: string = 'Monokai';
 
   defaultContent = {
-	  'Python': `
-class Solution(object):
+	  'Python': `class Solution(object):
     def countAndSay(self, n):
         """
         :type n: int
@@ -27,15 +26,13 @@ class Solution(object):
         """
 	  `,
 
-	  'Java': `
-public class Solution{
+	  'Java': `public class Solution{
 		public static void main(String[] args){
 			// put your code here!
 		}
 	}
 	  `,
-	  'JavaScript': `
-var sum(a, b) = {
+	  'JavaScript': `var sum(a, b) = {
 	return a + b;
 }
 sum(1, 2);
