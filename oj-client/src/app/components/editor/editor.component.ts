@@ -93,6 +93,12 @@ public:
       }
       
     });
+
+    this.editor.getSession().getSelection().on("changeCursor", ()=>{
+        let cursor = this.editor.getSession().getSelection().getCursor();
+        console.log("cursor move: " + JSON.stringify(cursor));
+        this.collaboration.cursorMove(JSON.stringify(cursor));
+    });
   }
 
   resetEditor(): void {

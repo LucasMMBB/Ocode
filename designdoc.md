@@ -1,4 +1,4 @@
-#Collaborative Online Judge Syste
+# Collaborative Online Judge Syste
 ## Overview
 Collaborative Online Judge System is a full-stack system supporting collaborative code editing, compiling, execution and resulte judgement. This document covers the details of the implementation of Collaborative Editor and User Code Executor from an engineering perspective
 ## Major Use Cases

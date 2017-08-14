@@ -20,22 +20,40 @@ module.exports = function(io) {
 			collaborations[sessionId]['participants'].push(socket.id);
 		}
 
-		// socket event listeners
+		//----- socket event listeners -----
+
+		//socket change event listener
 		socket.on('change', (delta) => {
 			console.log("change " + socketIdToSessionId[socket.id] + " " + delta);
-			let sessionId = socketIdToSessionId[socket.id];
+			forwardEvents(socket.id, 'change', delta);
+		});
 
+		//socket cursorMove event listener
+		socket.on('cursorMove', (cursor)=>{
+			console.log("cursorMove" + socketIdToSessionId[socket.id] + " " + cursor);
+			cursor = JSON.parse(cursor);
+			cursor['socketId'] = socket.id;
+			cursor = JSON.stringify(cursor);
+			forwardEvents(socket.id, "cursorMove", cursor);
+		});
+
+		// function to receive events from client(delta, cursor)
+	    function forwardEvents(socketId, eventName, dataString){
+			let sessionId = socketIdToSessionId[socketId];
+
+			//cursor = JSON.stringify(cursor);
 			if(sessionId in collaborations){
 				let participants = collaborations[sessionId]['participants'];
 				for(let i = 0; i < participants.length; i++){
 					if(socket.id != participants[i]){
-						io.to(participants[i]).emit("change", delta);
+						io.to(participants[i]).emit(eventName, dataString);
 					}
 				}
 			} else {
 				console.log("WARNING: could not tie socket_id to any collaborations");
 			}
-		});
+
+    	}
 		
 	});
 
