@@ -1,13 +1,9 @@
 # Ocode
 Online Judge system
 
-## Getting Started
+## Description
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
-
-### Prerequisites
-
-Knowledge of Socket.io
+Collaborative Online Judge System is a full-stack system supporting collaborative code editing, compiling, execution and resulte judgement.
 
 ### Installing
 
@@ -16,17 +12,20 @@ Follow the steps to run this app.
 Install libraries
 
 ```
+cd oj-client
+npm install
+
+cd ../oj-server
 npm install
 ```
 
 Run app
 
 ```
-nodemon index
-open http://localhost:3000
+nodemon server.js
 ```
 
-Now you can use this chat app,
+Now you can use this app,
 
 
 ## Authors
