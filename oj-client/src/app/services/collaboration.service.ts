@@ -63,15 +63,20 @@ export class CollaborationService {
   	this.collaborationSocket.on("message", (message) => {
   		console.log("From server: " + message);
   	});
-  }
+  }// init ends
 
   change(delta: string): void {
   	this.collaborationSocket.emit("change", delta);
-  }
+  }// change ends
 
   cursorMove(cursor: string): void{
     // send to server about the cursor change
     this.collaborationSocket.emit("cursorMove", cursor);
-  }
+  }// cursorMove ends
+
+  restoreBuffer(): void {
+    // tell server to restore
+    this.collaborationSocket.emit("restoreBuffer");
+  }// restoreBuffer end
 
 }

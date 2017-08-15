@@ -26,20 +26,20 @@ export class EditorComponent implements OnInit {
   theme: string = 'Eclipse';
 
   defaultContent = {
-	  'Python': `class Solution(object):
-    def countAndSay(self, n):
-        """
-        :type n: int
-        :rtype: str
-        """
+'Python': `class Solution(object):
+def countAndSay(self, n):
+    """
+    :type n: int
+    :rtype: str
+    """
 	  `,
-	  'Java': `public class Solution{
+'Java': `public class Solution{
 	public static void main(String[] args){
 		// put your code here!
 	}
 }
 	  `,
-	  'JavaScript': `
+'JavaScript': `
 /**
  * @param {number} n
  * @return {string}
@@ -48,7 +48,7 @@ var countAndSay = function(n) {
     
 };`
 		,
-	  'C++':`class Solution {
+'C++':`class Solution {
 public:
     string countAndSay(int n) {
         
@@ -99,7 +99,9 @@ public:
         console.log("cursor move: " + JSON.stringify(cursor));
         this.collaboration.cursorMove(JSON.stringify(cursor));
     });
-  }
+
+    this.collaboration.restoreBuffer();
+  }// initEditor ends
 
   resetEditor(): void {
   	this.editor.getSession().setMode('ace/mode/' + this.language.toLowerCase());
