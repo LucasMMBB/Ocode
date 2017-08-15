@@ -9,24 +9,14 @@ Collaborative Online Judge System is a full-stack system supporting collaborativ
 
 Follow the steps to run this app.
 
-Install libraries
+Install libraries and run app using launch.sh
 
 ```
-cd oj-client
-npm install
-
-cd ../oj-server
-npm install
-```
-
-Run app
-
-```
-nodemon server.js
+sudo ./launch.sh 
 ```
 
 Now you can use this app,
-
+This app runs on port: 3000
 
 ## Authors
 
