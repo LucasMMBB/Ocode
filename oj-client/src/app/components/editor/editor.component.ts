@@ -1,4 +1,3 @@
-
 import {Component, OnInit, Inject} from '@angular/core';
 
 import {ActivatedRoute, Params} from '@angular/router';

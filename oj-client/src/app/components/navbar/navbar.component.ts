@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { Router } from '@angular/router';
 import 'rxjs/add/operator/debounceTime';
 
+
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -15,7 +16,13 @@ export class NavbarComponent implements OnInit {
 
   username = ""
 
-  constructor(@Inject("auth") private auth) { }
+  subscription: Subscription
+
+  searchBox: FormControl = new FormControl()
+ 
+  constructor(@Inject("auth") private auth,
+              @Inject("input") private input,
+              private router: Router) { }
 
   ngOnInit() {
     if(this.auth.authenticated()){
@@ -23,6 +30,16 @@ export class NavbarComponent implements OnInit {
     }else{
       console.log("Not logged in !")
     }
+
+    this.subscription = this.searchBox
+                            .valueChanges
+                            .subscribe(
+                                term => this.input.changeInput(term)
+                              );
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
   authP(): boolean {
@@ -42,6 +59,10 @@ export class NavbarComponent implements OnInit {
   	this.auth.logout();
   }
 
+
+  searchProblem(): void {
+    this.router.navigateByUrl('/');
+  }
   
 
 }
