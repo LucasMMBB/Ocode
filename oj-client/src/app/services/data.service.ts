@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Problem } from '../models/problem.model';
-//import { PROBLEMS } from '../mock-problems';
 import { Http, Response, Headers } from '@angular/http';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Rx';
@@ -42,6 +41,20 @@ export class DataService {
                       return res.json()
                   })
                   .catch(this.handleError);
+  }
+
+  
+  // user code build and run
+  // json can be ignored
+  buildAndRun(data: JSON):Promise<Object>{
+      let headers = new Headers({'content-type': 'application/json'});
+      return this.http.post('api/v1/build_and_run', data, headers)
+                  .toPromise()
+                  .then((res: Response) => {
+                      console.log(res);
+                      return res.json()
+                  })
+                  .catch(this.handleError);   
   }
 
   // error handler

@@ -24,6 +24,8 @@ export class EditorComponent implements OnInit {
   themes: string[] = ['Monokai', 'Github', 'Eclipse', 'Xcode', 'Terminal', 'Textmate'];
   theme: string = 'Eclipse';
 
+  output: string;
+
   defaultContent = {
 'Python': `class Solution(object):
 def countAndSay(self, n):
@@ -56,6 +58,7 @@ public:
   }
 
   constructor(@Inject('collaboration') private collaboration,
+                          @Inject('data') private data,
                           private route: ActivatedRoute) { 
   }
 
@@ -107,6 +110,7 @@ public:
   	this.editor.setTheme('ace/theme/' + this.theme.toLowerCase());
   	this.editor.setValue(this.defaultContent[this.language]);
     this.editor.gotoLine(this.editor.session.getLength());
+    this.output = '';
     //this.editor.setHighlightActiveLine(true);
   }
 
@@ -122,6 +126,15 @@ public:
 
   submit(): void {
   	let userCode = this.editor.getValue();
+
+    let data = {
+      user_code: userCode,
+      lang: this.language.toLowerCase()
+    };
+
+    // use data service
+    this.data.buildAndRun(data)
+            .then(res => this.output = res.text);
   	console.log(userCode);
   }
 

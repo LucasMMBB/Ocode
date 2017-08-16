@@ -33,6 +33,7 @@ export class NavbarComponent implements OnInit {
 
     this.subscription = this.searchBox
                             .valueChanges
+                            .debounceTime(200)
                             .subscribe(
                                 term => this.input.changeInput(term)
                               );
