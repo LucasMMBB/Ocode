@@ -42,7 +42,7 @@ router.post("/build_and_run", jsonParser, (req, res) => {
 	console.log('usercode : ' + userCode);
 	rest_client.methods.build_and_run(
 		{
-			data: { code: userCode, lang: lange },
+			data: { code: userCode, lang: lang },
 			header: { "Content-Type": "application/json" }
 		}, (data, response) => {
 			console.log("Received response from execution server " + response);
