@@ -34,26 +34,23 @@ router.post("/problems", jsonParser, (req, res)=>{
 });
 
 // For usercode build and run
-router.post("/build_and_run", jsonParser, (req, res) => {
-	const userCode = req.body.user_code;
-	const lang = req.body.lang;
+router.post('/build_and_run', jsonParser, function(req, res) {
+  const userCode = req.body.user_code;
+  const lang = req.body.lang;
 
-	console.log('language : ' + lang);
-	console.log('usercode : ' + userCode);
-	rest_client.methods.build_and_run(
-		{
-			data: { code: userCode, lang: lang },
-			header: { "Content-Type": "application/json" }
-		}, (data, response) => {
-			console.log("Received response from execution server " + response);
-			const text = `Build output:  ${data['build']}
-			Execute output: ${data['run']}`;
+  rest_client.methods.build_and_run(
+      {data: { code: userCode, lang: lang },
+       headers: { "Content-Type": "application/json" }
+      }, (data, response) => {
+    console.log('Recieved response from execution server: ');
+    console.log(response);
+    // Generate a human readable response displayed in output textarea.
+    const text =`Build output: ${data['build']}
+    Execute output: ${data['run']}`;
 
-			data['text'] = text;
-			res.json(data);
-		}
-	);
+    data['text'] = text;
+    res.json(data);
+  });
 });
-
 
 module.exports = router;
