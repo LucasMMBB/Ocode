@@ -2,6 +2,8 @@
 launcher.sh
 /public
 oj-client/dist/
+*.pyc
+*.pyc/
 # Logs
 logs
 *.log

@@ -1,4 +1,5 @@
 import json
+import executor_utils as eu
 
 from flask import request
 from flask import Flask
@@ -20,7 +21,10 @@ def build_and_run():
     lang = data['lang']
 
     print "API got called with code: %s in %s" % (code, lang)
-    return jsonify({"hello": "world!"})
+
+    result = eu.build_and_run(code, lang)
+    return jsonify(result)
     
 if __name__ == "__main__":
-    app.run(debug=True)
+	eu.load_image()
+	app.run(debug=True)
